@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Lịch sử mua</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background: #f0f0f2; }
+    .history-container {
+      max-width: 900px;
+      margin: 30px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 15px;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: 0.3s;
+    }
+    .card:hover { transform: scale(1.03); }
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+    .card-body { padding: 10px; }
+    .card-body h3 {
+      margin: 0;
+      font-size: 18px;
+      color: #6600ff;
+    }
+    .card-body p { margin: 5px 0; }
+    .status { color: green; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1 style="text-align:center">Lịch sử mua acc</h1>
+</header>
+
+<main>
+  <div class="history-container" id="history-container">
+    <p style="text-align:center; grid-column: 1 / -1;">Chưa có giao dịch</p>
+  </div>
+</main>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  let history = JSON.parse(localStorage.getItem("lichsu") || "[]");
+  let container = document.getElementById("history-container");
+
+  if (history.length === 0) return;
+
+  container.innerHTML = "";
+  history.forEach(item => {
+    let card = `
+    <div class="card">
+      <img src="${item.img}" alt="Acc ${item.rank}">
+      <div class="card-body">
+        <h3>Acc #${item.id} - ${item.rank}</h3>
+        <p>Giá: ${item.gia.toLocaleString()}đ</p>
+        <p>Ngày mua: ${item.ngay}</p>
+        <p class="status">${item.trangthai}</p>
+      </div>
+    </div>`;
+    container.innerHTML += card;
+  });
+});
+</script>
+
+</body>
+</html>

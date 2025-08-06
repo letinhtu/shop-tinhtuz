@@ -1,0 +1,291 @@
+/* ==== Reset & Font ==== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f3f3f3;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* ==== Header ==== */
+header {
+    background: linear-gradient(90deg, #8a00ff, #b700ff);
+    padding: 15px 0;
+    text-align: center;
+    color: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+header h1 {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* ==== Navbar ==== */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: white;
+    background: #444;
+    padding: 8px 15px;
+    border-radius: 6px;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+.navbar a:hover {
+    background: #ffcc00;
+    color: #000;
+}
+
+#user-balance {
+    margin-left: auto;
+    background: #ffcc00;
+    color: #000;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* ==== Banner ==== */
+.banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.banner img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+.banner-text {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+/* ==== Top Nạp Tiền ==== */
+.top-nap {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    width: 80%;
+    margin: 0 auto 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.top-nap h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #8a00ff;
+}
+
+.top-nap ul {
+    list-style: none;
+}
+
+.top-nap li {
+    margin-bottom: 5px;
+}
+
+/* ==== Shop Acc ==== */
+.shop-acc {
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    padding: 30px 0;
+}
+
+.shop-acc h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #222;
+    font-weight: bold;
+}
+
+.acc-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.acc-card {
+    background: #fff;
+    border: 2px solid #ff6600;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    transition: 0.3s;
+    text-align: center;
+}
+
+.acc-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.acc-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-bottom: 2px solid #ff6600;
+}
+
+.acc-card h3 {
+    font-size: 18px;
+    margin: 10px 0 5px;
+}
+
+.acc-card p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.status .ready {
+    color: green;
+    font-weight: bold;
+}
+
+.status .left {
+    color: red;
+    font-weight: bold;
+}
+
+.price {
+    color: red;
+    font-weight: bold;
+}
+
+.btn-view,
+.btn-buy {
+    display: inline-block;
+    background: linear-gradient(to right, #ffcc00, #ff6600);
+    color: #fff;
+    padding: 6px 14px;
+    font-weight: bold;
+    border-radius: 20px;
+    text-decoration: none;
+    margin: 8px 0;
+    font-size: 13px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: 0.3s;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-view:hover,
+.btn-buy:hover {
+    transform: scale(1.05);
+}
+
+/* ==== Nạp tiền ==== */
+.nap-container {
+    width: 400px;
+    margin: 30px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nap-container h2 {
+    margin-bottom: 15px;
+}
+
+.nap-container label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.nap-container input,
+.nap-container select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.nap-container button {
+    margin-top: 15px;
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(to right, #ffcc00, #ff6600);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.nap-container button:hover {
+    transform: scale(1.05);
+}
+
+.method {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.method button {
+    flex: 1;
+    padding: 8px;
+    background: #8a00ff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.method button:hover {
+    background: #b700ff;
+}
+
+#momo-info {
+    margin-top: 15px;
+    padding: 15px;
+    background: #fff3e0;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+#momo-info img {
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* ==== Responsive ==== */
+@media (max-width: 768px) {
+    .navbar {
+        flex-wrap: wrap;
+    }
+    .shop-acc, .top-nap {
+        width: 95%;
+    }
+}

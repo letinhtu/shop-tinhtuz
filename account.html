@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tài khoản của tôi</title>
+  <style>
+    body {
+      background: #0f0f2d;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 30px;
+    }
+
+    .card {
+      background: #1e1e3f;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #ffd700;
+    }
+
+    .info {
+      margin: 10px 0;
+    }
+
+    input, button {
+      padding: 8px;
+      border-radius: 5px;
+      border: none;
+      margin-right: 5px;
+    }
+
+    ul {
+      background: #2c2c5c;
+      padding: 15px;
+      border-radius: 8px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    a {
+      color: #00aaff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Thông tin tài khoản</h2>
+    <div class="info"><strong>Tên đăng nhập:</strong> <span id="username"></span></div>
+    <div class="info"><strong>Số dư:</strong> <span id="balanceDisplay">0 VNĐ</span></div>
+
+    <div class="info">
+      <strong>Nạp tiền:</strong>
+      <input type="number" id="depositAmount" placeholder="Nhập số tiền..." />
+      <button onclick="depositMoney()">Nạp</button>
+    </div>
+
+    <h3>Lịch sử mua acc:</h3>
+    <ul id="purchaseList"></ul>
+
+    <br>
+    <a href="index.html">← Quay về shop</a>
+  </div>
+
+  <script>
+    const username = localStorage.getItem("currentUser");
+    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+
+    if (!isLoggedIn || !username) {
+      alert("Bạn chưa đăng nhập!");
+      window.location.href = "accountmember/auth.html";
+    }
+
+    document.getElementById("username").textContent = username;
+
+    function updateBalanceDisplay() {
+      const balances = JSON.parse(localStorage.getItem("balances")) || {};
+      const balance = balances[username] || 0;
+      document.getElementById("balanceDisplay").textContent = balance + " VNĐ";
+    }
+
+    function depositMoney() {
+      const amount = parseInt(document.getElementById("depositAmount").value);
+      if (isNaN(amount) || amount <= 0) {
+        alert("Vui lòng nhập số tiền hợp lệ!");
+        return;
+      }
+
+      const balances = JSON.parse(localStorage.getItem("balances")) || {};
+      balances[username] = (balances[username] || 0) + amount;
+      localStorage.setItem("balances", JSON.stringify(balances));
+      alert("Nạp tiền thành công!");
+      updateBalanceDisplay();
+      document.getElementById("depositAmount").value = "";
+    }
+
+    function loadPurchaseHistory() {
+      const historyData = JSON.parse(localStorage.getItem("purchaseHistory")) || {};
+      const userHistory = historyData[username] || [];
+      const list = document.getElementById("purchaseList");
+
+      if (userHistory.length === 0) {
+        list.innerHTML = "<li>Bạn chưa mua acc nào.</li>";
+      } else {
+        list.innerHTML = "";
+        userHistory.forEach(item => {
+          const li = document.createElement("li");
+          li.textContent = item;
+          list.appendChild(li);
+        });
+      }
+    }
+
+    updateBalanceDisplay();
+    loadPurchaseHistory();
+  </script>
+</body>
+</html>

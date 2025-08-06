@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <link rel="stylesheet" href="style.css">
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shop TinhTuz</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <span>
+      <nav class="navbar">
+    <a href="account/account.html">Tài khoản</a>
+    <a href="accountmember/auth.html">Đăng nhập</a>
+    <a href="nap.html">Nạp tiền</a>
+    <a href="lichsu.html">Lịch sử mua</a>
+    <span id="user-balance">Số dư: 0đ</span>
+    <span>Xin chào, <b id="username">Khách</b></span>
+    <button onclick="logout()">Đăng xuất</button>
+</nav>
+
+    
+    </nav>
+  </header>
+
+  <main>
+    <section class="banner">
+      <h2>Uy tín - Giá rẻ - Tự động - Giao lưu</h2>
+      <img src="https://thuthuatnhanh.com/wp-content/uploads/2020/09/anh-lien-quan-nakroth-scaled.jpg\1000x300" alt="Banner">
+    </section>
+
+    <section class="top-nap">
+      <h3>TOP NẠP TIỀN</h3>
+      <ul>
+        <li>1. Nguyễn Thanh Huy - 54,245,000đ</li>
+        <li>2. Ngô Nguyễn Gia Bảo - 48,600,000đ</li>
+      </ul>
+    </section>
+  </main>
+  // Danh sách acc
+<section class="acc-list">
+  <section class="shop-acc">
+    <h2>Shop Acc Liên Quân</h2>
+    <div class="acc-list">
+
+        <div class="acc-card">
+            <img src="https://tse4.mm.bing.net/th/id/OIP.JOjh4PlfmhtoYppkJKQckQHaKe?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Acc Liên Quân">
+            <h3>ACC CỜ NHON</h3>
+            <p class="status">Trạng Thái: <span class="ready">Sẵn Sàng</span></p>
+            <a href="#" class="btn-view">XEM TẤT CẢ</a>
+            <p class="info">Giá: <span class="price">20.000-300.000 VNĐ</span></p>
+        </div>
+
+        <div class="acc-card">
+            <img src="https://scr.vn/wp-content/uploads/2020/07/H%C3%ACnh-4k-Murad-scaled-1152x2048.jpg" alt="Acc Liên Quân">
+            <h3>ACC PHÔI LIÊN QUÂN</h3>
+            <p class="status">Trạng Thái: <span class="ready">Sẵn Sàng</span></p>
+            <a href="#" class="btn-view">XEM TẤT CẢ</a>
+            <p class="info">Giá: <span class="price">500.000-3.000.000 VNĐ</span></p>
+        </div>
+
+        <div class="acc-card">
+            <img src="https://th.bing.com/th/id/R.a229ef9d3217bd32ba8c42c6f74bd839?rik=tzAUb1qyqalFkA&pid=ImgRaw&r=0" alt="Acc Liên Quân">
+            <h3>TÚI MÙ 49K</h3>
+            <p class="status">Còn <span class="left">307</span> Nick</p>
+            <a href="#" class="btn-view">XEM TẤT CẢ</a>
+            <p class="info">Giá: <span class="price">39,000 VNĐ</span></p>
+        </div>
+
+    </div>
+</section>
+</section>
+
+  <footer>
+    <p>© 2025 Shop TinhTuz</p>
+  </footer>
+
+  <script src="script.js"></script>
+  
+  <script>
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+  const username = localStorage.getItem("currentUser");
+  const greetingEl = document.getElementById("user-greeting");
+
+  if (isLoggedIn && username) {
+    greetingEl.innerHTML = `Xin chào, <strong>${username}</strong> | <a href="#" onclick="logout()" style="color: yellow;">Đăng xuất</a>`;
+    updateBalanceDisplay(); // cập nhật số dư khi vừa đăng nhập
+
+  } else {
+    greetingEl.innerHTML = `<a href="accountmember/auth.html" style="color: yellow;">Đăng nhập / Đăng ký</a>`;
+  }
+
+  function logout() {
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("currentUser");
+    location.reload();
+  }
+</script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    header {
+      background-color: #333;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+    }
+    .banner {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .banner img {
+      max-width: 100%;
+      height: auto;
+    }
+    .top-nap {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+    .acc-list {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+    }
+    .acc-item {
+      margin-bottom: 15px;
+    }
+    .price {
+      color: red;
+    }
+    footer {
+      text-align: center;
+      padding: 10px 0;
+      background-color: #333;
+      color: white;
+    }
+  </style>
+<script>
+  function buyAcc(accName, price) {
+    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+    const username = localStorage.getItem("currentUser");
+    const greetingEl = document.getElementById("user-greeting");
+
+    if (!isLoggedIn || !username) {
+      alert("Bạn cần đăng nhập để mua acc.");
+      window.location.href = "accountmember/auth.html";
+      return;
+    }
+  let balances = JSON.parse(localStorage.getItem("balances")) || {};
+  let balance = balances[username] || 0;
+  const balanceEl = document.getElementById("balance-display");
+  if (balanceEl) {
+    balanceEl.textContent = `| Số dư: ${balance} VNĐ`;
+  }
+
+    if (balance < price) {
+      alert("Bạn không đủ tiền để mua acc này.");
+      return;
+    }
+
+    // Trừ tiền
+    balances[username] = balance - price;
+    localStorage.setItem("balances", JSON.stringify(balances));
+
+    // Lưu lịch sử mua
+    function muaAcc(id, rank, gia) {
+    let balance = parseInt(localStorage.getItem("balance") || 0);
+    if (balance < gia) {
+        alert("Số dư không đủ, vui lòng nạp thêm!");
+        return;
+    }
+
+    balance -= gia;
+    localStorage.setItem("balance", balance);
+
+    // Lưu vào lịch sử
+    let history = JSON.parse(localStorage.getItem("lichsu") || "[]");
+    history.push({
+        id: id,
+        gia: gia,
+        ngay: new Date().toLocaleString()
+    });
+    localStorage.setItem("lichsu", JSON.stringify(history));
+
+    alert(`Mua acc ${rank} thành công!`);
+    location.reload();
+    <button onclick="muaAcc(1, 'Cao Thủ', 200000)">Mua ngay</button>
+
+}
+
+    let history = JSON.parse(localStorage.getItem("purchaseHistory")) || {};
+    if (!history[username]) history[username] = [];
+    history[username].push(`${accName} - ${price} VNĐ`);
+    localStorage.setItem("purchaseHistory", JSON.stringify(history));
+
+    alert("Mua acc thành công!");
+    location.reload(); // Cập nhật số dư nếu cần
+  }
+</script>
+<script>
+function updateBalanceDisplay() {
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+  const username = localStorage.getItem("currentUser");
+  const balances = JSON.parse(localStorage.getItem("balances")) || {};
+  const balance = balances[username] || 0;
+  const balanceEl = document.getElementById("balance-display");
+  if (isLoggedIn && username && balanceEl) {
+    balanceEl.textContent = `| Số dư: ${balance} VNĐ`;
+  }
+}
+</script>
+
+</body>
+</html>
